@@ -1,24 +1,24 @@
-/*Ë«ÏòÁ´±í£ºAÀàÌâ*/
-/*Ö÷º¯Êı²¿·Ö*/
-/* Author : InetGeek(È½µÂ·¢)£¬2021-04-20. @Copyright By InetGeek*/
+/*åŒå‘é“¾è¡¨ï¼šAç±»é¢˜*/
+/*ä¸»å‡½æ•°éƒ¨åˆ†*/
+/* Author : InetGeekï¼Œ2021-04-20. @Copyright By InetGeek*/
 /* </> Blog: https://www.digran.cn */
 /**********************************************************************/
 #include <iostream>
-#include <conio.h> //¿ØÖÆÌ¨ÊäÈëÊä³ö, Èçgetch()º¯Êı
-#include <vector>	//vector¼´ÏòÁ¿£¬¼´³¤¶È¸ù¾İĞèÒª¶ø×Ô¶¯¸Ä±äµÄÊı×é
-#include <iomanip>	//Êä³ö¸ñÊ½»¯
-#include <assert.h>	//ºê£¬ÓÃÓÚÑéÖ¤³ÌĞò×ö³öµÄ¼ÙÉè£¬²¢ÔÚ¼ÙÉèÎª¼ÙÊ±Êä³öÕï¶ÏÏûÏ¢
-#include <fstream>	//ÎÄ¼şÁ÷
-#include <cstdlib>	//×Ö·û´®×ª»»	
-#include <algorithm>  //×Ö·û´¦Àí
-#include <string>	//×Ö·û´®
-#include "Double_Link_List.h"	//×Ô¶¨ÒåÍ·ÎÄ¼ş£¬ÓÃÓÚ¶¨ÒåÁ´±íºÍ½á¹¹ÌåÀà
+#include <conio.h> //æ§åˆ¶å°è¾“å…¥è¾“å‡º, å¦‚getch()å‡½æ•°
+#include <vector>	//vectorå³å‘é‡ï¼Œå³é•¿åº¦æ ¹æ®éœ€è¦è€Œè‡ªåŠ¨æ”¹å˜çš„æ•°ç»„
+#include <iomanip>	//è¾“å‡ºæ ¼å¼åŒ–
+#include <assert.h>	//å®ï¼Œç”¨äºéªŒè¯ç¨‹åºåšå‡ºçš„å‡è®¾ï¼Œå¹¶åœ¨å‡è®¾ä¸ºå‡æ—¶è¾“å‡ºè¯Šæ–­æ¶ˆæ¯
+#include <fstream>	//æ–‡ä»¶æµ
+#include <cstdlib>	//å­—ç¬¦ä¸²è½¬æ¢	
+#include <algorithm>  //å­—ç¬¦å¤„ç†
+#include <string>	//å­—ç¬¦ä¸²
+#include "Double_Link_List.h"	//è‡ªå®šä¹‰å¤´æ–‡ä»¶ï¼Œç”¨äºå®šä¹‰é“¾è¡¨å’Œç»“æ„ä½“ç±»
 using namespace std;
 
-/*¶¨ÒåÁªÏµÈË½á¹¹Ìå£¬ÓÃÓÚ´æ´¢ÆäĞÕÃû¡¢ÄêÁä¡¢µç»°µÈĞÅÏ¢*/
+/*å®šä¹‰è”ç³»äººç»“æ„ä½“ï¼Œç”¨äºå­˜å‚¨å…¶å§“åã€å¹´é¾„ã€ç”µè¯ç­‰ä¿¡æ¯*/
 struct friends
 {
-	int num;	//µç»°²¾ÁªÏµÈËĞòºÅ
+	int num;	//ç”µè¯ç°¿è”ç³»äººåºå·
 	char name[20];
 	char tel[20];
 	int age;
@@ -28,29 +28,29 @@ int main()
 {
 	DoubleLinkList< friends > List;
 	friends Value;
-	char SearchName[20];	//´æ´¢ÊÖ¶¯ÊäÈëĞèÒª²éÕÒµÄÁªÏµÈËĞÕÃûÊı×é
-	int SearchNum;	//´æ´¢ÊÖ¶¯ÊäÈëĞèÒª²éÕÒµÄÁªÏµÈËĞòºÅµÄÕûĞÍ±äÁ¿
-	int Option = 0, Option_2;	//²Ù×÷Êı£¬Option¿ØÖÆÖ÷²Ëµ¥£¬Option_2¿ØÖÆ×Ó²Ëµ¥
+	char SearchName[20];	//å­˜å‚¨æ‰‹åŠ¨è¾“å…¥éœ€è¦æŸ¥æ‰¾çš„è”ç³»äººå§“åæ•°ç»„
+	int SearchNum;	//å­˜å‚¨æ‰‹åŠ¨è¾“å…¥éœ€è¦æŸ¥æ‰¾çš„è”ç³»äººåºå·çš„æ•´å‹å˜é‡
+	int Option = 0, Option_2;	//æ“ä½œæ•°ï¼ŒOptionæ§åˆ¶ä¸»èœå•ï¼ŒOption_2æ§åˆ¶å­èœå•
 	do
 	{
-		system("cls");	//ÇåÆÁ
+		system("cls");	//æ¸…å±
 		cout<<"*******************************************************\n"
-			<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+			<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 			<<"-------------------------------------------------------\n"
-			<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+			<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 			<<"*******************************************************\n"
-			<<"\t\t\tÖ÷²Ëµ¥MENU \n"
+			<<"\t\t\tä¸»èœå•MENU \n"
 			<<"-------------------------------------------------------"
-			<<"\n 1.) ĞÂ½¨ÁªÏµÈË"
-			<<"\n 2.) ²é¿´ËùÓĞÁªÏµÈË "
-			<<"\n 3.) ²é¿´ÒÑ±£´æÁªÏµÈË "
-			<<"\n 4.) ²éÕÒÖ¸¶¨ÁªÏµÈË"
-			<<"\n 5.) É¾³ıÖ¸¶¨ÁªÏµÈË "
-			<<"\n 6.) ĞŞ¸ÄÖ¸¶¨ÁªÏµÈËĞÅÏ¢ "
-			<<"\n 7.) ²é¿´ÁªÏµÈËÊıÁ¿ "
-			<<"\n 8.) ÍË³ö³ÌĞò "
+			<<"\n 1.) æ–°å»ºè”ç³»äºº"
+			<<"\n 2.) æŸ¥çœ‹æ‰€æœ‰è”ç³»äºº "
+			<<"\n 3.) æŸ¥çœ‹å·²ä¿å­˜è”ç³»äºº "
+			<<"\n 4.) æŸ¥æ‰¾æŒ‡å®šè”ç³»äºº"
+			<<"\n 5.) åˆ é™¤æŒ‡å®šè”ç³»äºº "
+			<<"\n 6.) ä¿®æ”¹æŒ‡å®šè”ç³»äººä¿¡æ¯ "
+			<<"\n 7.) æŸ¥çœ‹è”ç³»äººæ•°é‡ "
+			<<"\n 8.) é€€å‡ºç¨‹åº "
 			<<"\n-------------------------------------------------------"
-			<<"\n¹¦ÄÜÑ¡Ôñ: ";
+			<<"\nåŠŸèƒ½é€‰æ‹©: ";
 		cin>>Option;
 		switch(Option)
 			{
@@ -58,19 +58,19 @@ int main()
 				{
 					system("cls");
 					cout<<"*******************************************************\n"
-						<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						<<"-------------------------------------------------------\n"
-						<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						<<"*******************************************************\n"
-						<<"\t\t\tĞÂ½¨ÁªÏµÈË\n"
+						<<"\t\t\tæ–°å»ºè”ç³»äºº\n"
 						<<"-------------------------------------------------------"
-						<<"\n ÊäÈëÁªÏµÈËĞÅÏ¢: \n";
+						<<"\n è¾“å…¥è”ç³»äººä¿¡æ¯: \n";
 					Value.num = List.LenghtOfDoubleLinkList()+1;
-					cout << "ĞÕÃû: ";
+					cout << "å§“å: ";
 					cin>>Value.name;
-					cout << "ÄêÁä: ";
+					cout << "å¹´é¾„: ";
 					cin>>Value.age;
-					cout << "µç»°: ";
+					cout << "ç”µè¯: ";
 					cin>>Value.tel;
 					List.InsertAtRear(Value);
 					List.FileWrite();
@@ -80,13 +80,13 @@ int main()
 				{
 					system("cls");
 					cout<<"*******************************************************\n"
-						<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						<<"-------------------------------------------------------\n"
-						<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						<<"*******************************************************\n"
-						<<"\t\t\t²é¿´ËùÓĞÁªÏµÈË\n"
+						<<"\t\t\tæŸ¥çœ‹æ‰€æœ‰è”ç³»äºº\n"
 						<<"-------------------------------------------------------"
-						<<"\n ËùÓĞÁªÏµÈËĞÅÏ¢ÈçÏÂ: \n\n";
+						<<"\n æ‰€æœ‰è”ç³»äººä¿¡æ¯å¦‚ä¸‹: \n\n";
 					List.TraverseForward();
 					break;
 				}
@@ -94,13 +94,13 @@ int main()
 				{
 					system("cls");
 					cout<<"*******************************************************\n"
-						<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						<<"-------------------------------------------------------\n"
-						<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						<<"*******************************************************\n"
-						<<"\t\t\t²é¿´ÒÑ±£´æÁªÏµÈË\n"
+						<<"\t\t\tæŸ¥çœ‹å·²ä¿å­˜è”ç³»äºº\n"
 						<<"-------------------------------------------------------"
-						<<"\n ËùÓĞÁªÏµÈËĞÅÏ¢ÈçÏÂ: \n\n";
+						<<"\n æ‰€æœ‰è”ç³»äººä¿¡æ¯å¦‚ä¸‹: \n\n";
 					List.FileRead();
 					break;
 				}
@@ -108,22 +108,22 @@ int main()
 				{
 					system("cls");
 					cout<<"*******************************************************\n"
-						<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						<<"-------------------------------------------------------\n"
-						<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						<<"*******************************************************\n"
-						<<"\t\t\t²éÕÒÖ¸¶¨ÁªÏµÈË\n"
+						<<"\t\t\tæŸ¥æ‰¾æŒ‡å®šè”ç³»äºº\n"
 						<<"-------------------------------------------------------"
-						<<"\n1).°´ĞÕÃû²éÕÒ  2).°´ĞòºÅ²éÕÒ\n"
-						<<"ÊäÈëÑ¡Ôñ(1/2): ";
+						<<"\n1).æŒ‰å§“åæŸ¥æ‰¾  2).æŒ‰åºå·æŸ¥æ‰¾\n"
+						<<"è¾“å…¥é€‰æ‹©(1/2): ";
 					cin>>Option_2;
 					if(Option_2==1){
-						cout << "ÊäÈëÒª²éÕÒµÄÁªÏµÈËĞÕÃû: ";
+						cout << "è¾“å…¥è¦æŸ¥æ‰¾çš„è”ç³»äººå§“å: ";
 						cin >> SearchName;
 						List.SearchByName(SearchName);	
 					}
 					if(Option_2==2){
-						cout << "ÊäÈëÒª²éÕÒµÄÁªÏµÈËĞòºÅ: ";
+						cout << "è¾“å…¥è¦æŸ¥æ‰¾çš„è”ç³»äººåºå·: ";
 						cin >> SearchNum;
 						List.SearchByIndex(SearchNum);
 					}
@@ -133,24 +133,24 @@ int main()
 				{
 					system("cls");
 					cout<<"*******************************************************\n"
-						<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						<<"-------------------------------------------------------\n"
-						<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						<<"*******************************************************\n"
-						<<"\t\t\tÉ¾³ıÖ¸¶¨ÁªÏµÈË\n"
+						<<"\t\t\tåˆ é™¤æŒ‡å®šè”ç³»äºº\n"
 						<<"-------------------------------------------------------"
-						<<"\n1).°´ĞÕÃûÉ¾³ı  2).°´ĞòºÅÉ¾³ı\n"
-						<<"ÊäÈëÑ¡Ôñ(1/2): ";
+						<<"\n1).æŒ‰å§“ååˆ é™¤  2).æŒ‰åºå·åˆ é™¤\n"
+						<<"è¾“å…¥é€‰æ‹©(1/2): ";
 					cin>>Option_2;
 					if(Option_2==1){
-						cout << "ÊäÈëÒªÉ¾³ıµÄÁªÏµÈËĞÕÃû: ";
+						cout << "è¾“å…¥è¦åˆ é™¤çš„è”ç³»äººå§“å: ";
 						cin >> SearchName;
 						List.DeleteByName(SearchName);
 						List.FileWrite();
 						//system("pause");
 					}
 					if(Option_2==2){
-						cout << "ÊäÈëÒªÉ¾³ıµÄÁªÏµÈËĞòºÅ: ";
+						cout << "è¾“å…¥è¦åˆ é™¤çš„è”ç³»äººåºå·: ";
 						cin >> SearchNum;
 						List.DeleteByIndex(SearchNum);
 						List.FileWrite();
@@ -162,24 +162,24 @@ int main()
 				{
 					system("cls");
 					cout<<"*******************************************************\n"
-						<<"\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						<<"\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						<<"-------------------------------------------------------\n"
-						<<"\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						<<"\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						<<"*******************************************************\n"
-						<<"\t\t\tĞŞ¸ÄÖ¸¶¨ÁªÏµÈËĞÅÏ¢\n"
+						<<"\t\t\tä¿®æ”¹æŒ‡å®šè”ç³»äººä¿¡æ¯\n"
 						<<"-------------------------------------------------------"
-						<<"\n1).°´ĞÕÃûĞŞ¸Ä  2).°´ĞòºÅĞŞ¸Ä\n"
-						<<"ÊäÈëÑ¡Ôñ(1/2): ";
+						<<"\n1).æŒ‰å§“åä¿®æ”¹  2).æŒ‰åºå·ä¿®æ”¹\n"
+						<<"è¾“å…¥é€‰æ‹©(1/2): ";
 					cin>>Option_2;
 					if(Option_2==1){
-						cout << "ÊäÈëÒªĞŞ¸ÄµÄÁªÏµÈËĞÕÃû: ";
+						cout << "è¾“å…¥è¦ä¿®æ”¹çš„è”ç³»äººå§“å: ";
 						cin >> SearchName;
 						List.UpdateByName(SearchName);
 						List.FileWrite();
 						system("pause");
 					}
 					if(Option_2==2){
-						cout << "ÊäÈëÒªĞŞ¸ÄµÄÁªÏµÈËĞòºÅ: ";
+						cout << "è¾“å…¥è¦ä¿®æ”¹çš„è”ç³»äººåºå·: ";
 						cin >> SearchNum;
 						List.UpdateByIndex(SearchNum);
 						List.FileWrite();
@@ -192,20 +192,20 @@ int main()
 				{
 					system("cls");
 					cout << "*******************************************************\n"
-						 << "\ttemplateË«ÏòÁ´±íÊµÏÖµç»°²¾¹ÜÀíÏµÍ³\n"
+						 << "\ttemplateåŒå‘é“¾è¡¨å®ç°ç”µè¯ç°¿ç®¡ç†ç³»ç»Ÿ\n"
 						 << "-------------------------------------------------------\n"
-						 << "\t×÷Õß£ºÈ½µÂ·¢   Ñ§ºÅ£º9201040G0332   ÄÑ¶È£ºA\n"
+						 << "\tä½œè€…ï¼šå†‰å¾·å‘   å­¦å·ï¼š9201040G0332   éš¾åº¦ï¼šA\n"
 						 << "*******************************************************\n"
-						 << "\t\t\t²é¿´ÁªÏµÈËÊıÁ¿\n"
+						 << "\t\t\tæŸ¥çœ‹è”ç³»äººæ•°é‡\n"
 						 << "-------------------------------------------------------";
 					if(List.LenghtOfDoubleLinkList()>0){
-						cout<< "\nÁªÏµÈË¹²ÓĞ"
-							<< List.LenghtOfDoubleLinkList() << "ÈË£¡"
-							<< "·Ö±ğÊÇ:\n";
+						cout<< "\nè”ç³»äººå…±æœ‰"
+							<< List.LenghtOfDoubleLinkList() << "äººï¼"
+							<< "åˆ†åˆ«æ˜¯:\n";
 							List.FileRead();
 					}
 					else{
-						cout << "Ã»ÓĞÁªÏµÈË£¡" << endl;
+						cout << "æ²¡æœ‰è”ç³»äººï¼" << endl;
 						List.FileRead();
 					}
 					break;
@@ -225,17 +225,17 @@ int main()
 	return 0;
 }
 
-template< class NodeType >		//¹¹Ôìº¯Êı£¬´´½¨½áµã
+template< class NodeType >		//æ„é€ å‡½æ•°ï¼Œåˆ›å»ºç»“ç‚¹
 Node< NodeType >::Node()
 :Data( NULL ),NextNode( NULL ),PreviousNode( NULL ) {}
 
 
 /**********************************************************************/
-template< class NodeType >		//¸´ÖÆ¹¹Ôìº¯Êı£¬´´½¨ÁªÏµÈË½áµã¶ÔÏó
+template< class NodeType >		//å¤åˆ¶æ„é€ å‡½æ•°ï¼Œåˆ›å»ºè”ç³»äººç»“ç‚¹å¯¹è±¡
 Node< NodeType >::Node( NodeType &Value )
 :Data( Value ),NextNode( NULL ),PreviousNode( NULL ) 
 {
-	//cout<<"\n A Node Created Successfully . ";	//debug×¨ÓÃ
+	//cout<<"\n A Node Created Successfully . ";	//debugä¸“ç”¨
 }
 
 
@@ -243,21 +243,21 @@ Node< NodeType >::Node( NodeType &Value )
 template< class NodeType >
 Node< NodeType >::~Node()
 {
-	//cout<<"\n A Node Destroyed Successfully .";	//debug×¨ÓÃ
+	//cout<<"\n A Node Destroyed Successfully .";	//debugä¸“ç”¨
 }
 
 
 /**********************************************************************/
-template< class NodeType >		//¹¹Ôìº¯Êı£¬´´½¨Ë«ÏòÁ´±í£¬ÓÃÓÚ´æ´¢µç»°²¾
+template< class NodeType >		//æ„é€ å‡½æ•°ï¼Œåˆ›å»ºåŒå‘é“¾è¡¨ï¼Œç”¨äºå­˜å‚¨ç”µè¯ç°¿
 DoubleLinkList< NodeType >::DoubleLinkList()
 :FirstNode( NULL ),RearNode( NULL )
 {
-	//cout<<"\n A Double Linked List Created Successfully .";	//debug×¨ÓÃ
+	//cout<<"\n A Double Linked List Created Successfully .";	//debugä¸“ç”¨
 }
 
 
 /**********************************************************************/
-template< class NodeType >		//ÅĞ¶ÏË«ÏòÁ´±íÊÇ·ñÎª¿Õ£¬Îª¿ÕÔò·µ»Øtrue
+template< class NodeType >		//åˆ¤æ–­åŒå‘é“¾è¡¨æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºåˆ™è¿”å›true
 bool DoubleLinkList< NodeType >::IsEmpty()
 {
 	if( FirstNode == NULL )
@@ -270,17 +270,17 @@ bool DoubleLinkList< NodeType >::IsEmpty()
 
 
 /**********************************************************************/
-template< class NodeType >		//Éú³É½áµã
+template< class NodeType >		//ç”Ÿæˆç»“ç‚¹
 Node< NodeType > *DoubleLinkList< NodeType >::CreateNode( NodeType &Value )
 {
 	Node< NodeType > *NewNode = new Node< NodeType >( Value );
-	assert( NewNode != NULL ); //¶ÏÑÔ£¬ÅĞ¶ÏĞÂ½¨½áµãÊÇ·ñÎª¿Õ£¬Îª¿ÕÔò·µ»Ø½áµã¡£
+	assert( NewNode != NULL ); //æ–­è¨€ï¼Œåˆ¤æ–­æ–°å»ºç»“ç‚¹æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºåˆ™è¿”å›ç»“ç‚¹ã€‚
 	return NewNode ;
 }
 
 
 /**********************************************************************/
-template< class NodeType >		//²åÈëÁªÏµÈË½áµã£¬ÔÚË«ÏòÁ´±í½ÚµãÉÏÏòºó²åÈë
+template< class NodeType >		//æ’å…¥è”ç³»äººç»“ç‚¹ï¼Œåœ¨åŒå‘é“¾è¡¨èŠ‚ç‚¹ä¸Šå‘åæ’å…¥
 void DoubleLinkList< NodeType >::InsertAtRear( NodeType &Value )
 {
 	Node< NodeType > *NewNode = CreateNode(Value);
@@ -295,7 +295,7 @@ void DoubleLinkList< NodeType >::InsertAtRear( NodeType &Value )
 		RearNode = NewNode;
 		RearNode->NextNode = NULL;
 		}
-	cout<<"\n\n±£´æ³É¹¦£¡±£´æµÄÁªÏµÈËĞÅÏ¢ÈçÏÂ:\n-------------------------------\n";
+	cout<<"\n\nä¿å­˜æˆåŠŸï¼ä¿å­˜çš„è”ç³»äººä¿¡æ¯å¦‚ä¸‹:\n-------------------------------\n";
 	cout<<RearNode->Data.name<<"  ";
 	cout<<RearNode->Data.age<<"  ";
 	cout<<RearNode->Data.tel<<"\n-------------------------------\n";
@@ -304,14 +304,14 @@ void DoubleLinkList< NodeType >::InsertAtRear( NodeType &Value )
 
 
 /**********************************************************************/
-template< class NodeType >		//ÕıÏò±éÀú½áµã£¬ÕÒ³öÈ«²¿ÁªÏµÈËĞÅÏ¢
+template< class NodeType >		//æ­£å‘éå†ç»“ç‚¹ï¼Œæ‰¾å‡ºå…¨éƒ¨è”ç³»äººä¿¡æ¯
 void DoubleLinkList< NodeType >::TraverseForward()
 {
 	cout<<setiosflags(ios::left);
-	cout<<setw(6)<<"ĞòºÅ"
-		<<setw(14)<<"ĞÕÃû"
-		<<setw(6)<<"ÄêÁä"
-		<<setw(18)<<"µç»°"<<endl;
+	cout<<setw(6)<<"åºå·"
+		<<setw(14)<<"å§“å"
+		<<setw(6)<<"å¹´é¾„"
+		<<setw(18)<<"ç”µè¯"<<endl;
 	Node< NodeType > *CurrentNode = FirstNode ;
 	while ( CurrentNode != NULL)
 		{
@@ -328,7 +328,7 @@ void DoubleLinkList< NodeType >::TraverseForward()
 
 
 /**********************************************************************/
-template< class NodeType >		//ÇóË«ÏòÁ´±í³¤¶È£¬¼´Ëã³öµç»°²¾ÁªÏµÈË×ÜÊı
+template< class NodeType >		//æ±‚åŒå‘é“¾è¡¨é•¿åº¦ï¼Œå³ç®—å‡ºç”µè¯ç°¿è”ç³»äººæ€»æ•°
 int DoubleLinkList< NodeType >::LenghtOfDoubleLinkList()
 {
 	int NosOfNodes = 0 ;
@@ -339,22 +339,22 @@ int DoubleLinkList< NodeType >::LenghtOfDoubleLinkList()
 		NosOfNodes++;
 		CurrentNode = CurrentNode->NextNode;
 		}
-	return NosOfNodes;	//·µ»ØÁ´±í³¤¶È
+	return NosOfNodes;	//è¿”å›é“¾è¡¨é•¿åº¦
 }
 
 
 /**********************************************************************/
-template< class NodeType >		//½«ËùÓĞÁªÏµÈËĞÅÏ¢´æÈë±¾µØÎÄ¼ş
+template< class NodeType >		//å°†æ‰€æœ‰è”ç³»äººä¿¡æ¯å­˜å…¥æœ¬åœ°æ–‡ä»¶
 int DoubleLinkList< NodeType >::FileWrite()
 {
 	ofstream freindsfile("friends.txt");
     Node< NodeType > *CurrentNode = FirstNode ;
 	if (freindsfile.is_open()){
 		freindsfile <<setiosflags(ios::left);
-		freindsfile	<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+		freindsfile	<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 	}
 	while ( CurrentNode != NULL)
 	{
@@ -374,18 +374,18 @@ int DoubleLinkList< NodeType >::FileWrite()
 
 
 /**********************************************************************/
-template< class NodeType >		//´Ó±¾µØÎÄ¼şÖĞ¶ÁÈ¡ËùÓĞÁªÏµÈËĞÅÏ¢
+template< class NodeType >		//ä»æœ¬åœ°æ–‡ä»¶ä¸­è¯»å–æ‰€æœ‰è”ç³»äººä¿¡æ¯
 int DoubleLinkList< NodeType >::FileRead()
 {
 	 char buffer[256];
     ifstream freindsfile("friends.txt");
     if (! freindsfile.is_open())
     {
-        cout << "´ò¿ªÎÄ¼ş´íÎó£¡"; exit (1);
+        cout << "æ‰“å¼€æ–‡ä»¶é”™è¯¯ï¼"; exit (1);
     }
-    while (!freindsfile.eof())	//ÅĞ¶ÏÊÇ·ñÒÑµ½ÎÄÄ©
+    while (!freindsfile.eof())	//åˆ¤æ–­æ˜¯å¦å·²åˆ°æ–‡æœ«
     {
-        freindsfile.getline(buffer,100);	//´Ó»º³åÇø¶ÁÈ¡³¤¶È²»³¬¹ı100µÄ×Ö·û´®²¢¿½±´µ½bufferÊı×é
+        freindsfile.getline(buffer,100);	//ä»ç¼“å†²åŒºè¯»å–é•¿åº¦ä¸è¶…è¿‡100çš„å­—ç¬¦ä¸²å¹¶æ‹·è´åˆ°bufferæ•°ç»„
         cout<<buffer<< endl;
     }
 	cout << endl;
@@ -395,18 +395,18 @@ int DoubleLinkList< NodeType >::FileRead()
 
 
 /**********************************************************************/
-template< class NodeType >		//µç»°²¾ÁªÏµÈËÓë²éÕÒÁªÏµÈËÃû×ÖµÄĞ¡Ğ´×ª»»ÓëÍ¨Åä·ûÆ¥Åä
-bool DoubleLinkList< NodeType >::CompStr(char *friend_name, char *search_name)	//´«²Î·Ö±ğÊÇµç»°²¾ÁªÏµÈËĞÕÃûºÍÊÖ¶¯ÊäÈëµÄĞÕÃû
+template< class NodeType >		//ç”µè¯ç°¿è”ç³»äººä¸æŸ¥æ‰¾è”ç³»äººåå­—çš„å°å†™è½¬æ¢ä¸é€šé…ç¬¦åŒ¹é…
+bool DoubleLinkList< NodeType >::CompStr(char *friend_name, char *search_name)	//ä¼ å‚åˆ†åˆ«æ˜¯ç”µè¯ç°¿è”ç³»äººå§“åå’Œæ‰‹åŠ¨è¾“å…¥çš„å§“å
 {
 	int i = 0;
-	string str_1 = friend_name, str_2 = search_name;		//µç»°²¾ÁªÏµÈËÓë²éÕÒÁªÏµÈËÃû×ÖµÄĞ¡Ğ´×ª»»
-	transform(str_1.begin(),str_1.end(),str_1.begin(),::tolower);	//Í¨¹ıÈİÆ÷½øĞĞ±éÀú£¬Í¨¹ıÄÚÖÃº¯Êıtransform½«×Ö·û×ª»»³ÉĞ¡Ğ´
-	transform(str_2.begin(),str_2.end(),str_2.begin(),::tolower);	//Í¨¹ıÈİÆ÷½øĞĞ±éÀú£¬Í¨¹ıÄÚÖÃº¯Êıtransform½«×Ö·û×ª»»³ÉĞ¡Ğ´
-	//µç»°²¾ÁªÏµÈËÓë²éÕÒÁªÏµÈËÃû×ÖÍ¨Åä·ûÆ¥Åä
+	string str_1 = friend_name, str_2 = search_name;		//ç”µè¯ç°¿è”ç³»äººä¸æŸ¥æ‰¾è”ç³»äººåå­—çš„å°å†™è½¬æ¢
+	transform(str_1.begin(),str_1.end(),str_1.begin(),::tolower);	//é€šè¿‡å®¹å™¨è¿›è¡Œéå†ï¼Œé€šè¿‡å†…ç½®å‡½æ•°transformå°†å­—ç¬¦è½¬æ¢æˆå°å†™
+	transform(str_2.begin(),str_2.end(),str_2.begin(),::tolower);	//é€šè¿‡å®¹å™¨è¿›è¡Œéå†ï¼Œé€šè¿‡å†…ç½®å‡½æ•°transformå°†å­—ç¬¦è½¬æ¢æˆå°å†™
+	//ç”µè¯ç°¿è”ç³»äººä¸æŸ¥æ‰¾è”ç³»äººåå­—é€šé…ç¬¦åŒ¹é…
 	while(str_1[i]&&str_2[i]){
-		if(str_2[i]=='*') //Æ¥Åä*·ûºÅ£¬ÈôÎª*Ôò·µ»ØÕæ
+		if(str_2[i]=='*') //åŒ¹é…*ç¬¦å·ï¼Œè‹¥ä¸º*åˆ™è¿”å›çœŸ
 			return true;
-		if(str_1[i]!=str_2[i]&&str_2[i]!='?')	//Æ¥Åä×Ö·û?£¬ÈôÓöµ½?ÔòÈÏÎªÎªÕæ
+		if(str_1[i]!=str_2[i]&&str_2[i]!='?')	//åŒ¹é…å­—ç¬¦?ï¼Œè‹¥é‡åˆ°?åˆ™è®¤ä¸ºä¸ºçœŸ
 			return false;
 		i++;
 	}
@@ -418,19 +418,19 @@ bool DoubleLinkList< NodeType >::CompStr(char *friend_name, char *search_name)	/
 
 
 /*********************************************************************/
-template< class NodeType >		//°´ĞÕÃû²éÕÒÁªÏµÈË
-void DoubleLinkList< NodeType >::SearchByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄÁªÏµÈËĞÕÃû
+template< class NodeType >		//æŒ‰å§“åæŸ¥æ‰¾è”ç³»äºº
+void DoubleLinkList< NodeType >::SearchByName(char *search_name)	//ä¼ å‚ä¸ºæ‰‹åŠ¨è¾“å…¥çš„è”ç³»äººå§“å
 {
 	Node< NodeType > *CurrentNode = FirstNode ;
 	while ( CurrentNode != NULL)
 		{
 			if(CompStr(CurrentNode->Data.name,search_name)){
 				cout<<setiosflags(ios::left);
-				cout << "ÒÑÕÒµ½£¡ÁªÏµÈËĞÅÏ¢ÈçÏÂ: \n";
-				cout<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+				cout << "å·²æ‰¾åˆ°ï¼è”ç³»äººä¿¡æ¯å¦‚ä¸‹: \n";
+				cout<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 				cout<<setw(6)<<CurrentNode->Data.num
 					<<setw(14)<<CurrentNode->Data.name
 					<<setw(6)<<CurrentNode->Data.age
@@ -444,19 +444,19 @@ void DoubleLinkList< NodeType >::SearchByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈ
 
 
 /*********************************************************************/
-template< class NodeType >		//°´ĞòºÅ²éÕÒÁªÏµÈË
-void DoubleLinkList< NodeType >::SearchByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄÁªÏµÈËµÄĞòºÅ
+template< class NodeType >		//æŒ‰åºå·æŸ¥æ‰¾è”ç³»äºº
+void DoubleLinkList< NodeType >::SearchByIndex(int SearchNum)	//ä¼ å‚ä¸ºæ‰‹åŠ¨è¾“å…¥çš„è”ç³»äººçš„åºå·
 {
 	Node< NodeType > *CurrentNode = FirstNode ;
 	while ( CurrentNode != NULL)
 		{
 			if(CurrentNode->Data.num==SearchNum){
 				cout<<setiosflags(ios::left);
-				cout << "ÒÑÕÒµ½£¡ÁªÏµÈËĞÅÏ¢ÈçÏÂ: \n";
-				cout<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+				cout << "å·²æ‰¾åˆ°ï¼è”ç³»äººä¿¡æ¯å¦‚ä¸‹: \n";
+				cout<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 				cout<<setw(6)<<CurrentNode->Data.num
 					<<setw(14)<<CurrentNode->Data.name
 					<<setw(6)<<CurrentNode->Data.age
@@ -470,38 +470,38 @@ void DoubleLinkList< NodeType >::SearchByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄ
 
 
 /*********************************************************************/
-template< class NodeType >		//°´ĞÕÃûÉ¾³ıÁªÏµÈË
-void DoubleLinkList< NodeType >::DeleteByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄÁªÏµÈËµÄĞÕÃû
+template< class NodeType >		//æŒ‰å§“ååˆ é™¤è”ç³»äºº
+void DoubleLinkList< NodeType >::DeleteByName(char *search_name)	//ä¼ å‚ä¸ºæ‰‹åŠ¨è¾“å…¥çš„è”ç³»äººçš„å§“å
 {
 	Node< NodeType > *CurrentNode = FirstNode,*TempNode,*TEmpNode, *DeleteFirst, *DeleteRear;
 	int flag = 0;
 	while ( CurrentNode != NULL)
 		{
 			if(CompStr(CurrentNode->Data.name,search_name)){
-				cout << "Ô­ÓĞÁªÏµÈËĞÅÏ¢:\n";
+				cout << "åŸæœ‰è”ç³»äººä¿¡æ¯:\n";
 				cout<<setiosflags(ios::left);
-				cout<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+				cout<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 				cout<<setw(6)<<CurrentNode->Data.num
 					<<setw(14)<<CurrentNode->Data.name
 					<<setw(6)<<CurrentNode->Data.age
 					<<setw(18)<<CurrentNode->Data.tel<<endl;
-				cout << "È·ÈÏÉ¾³ıÂğ£¿(Y/N): ";
+				cout << "ç¡®è®¤åˆ é™¤å—ï¼Ÿ(Y/N): ";
 				char input;
 				cin>>input;
 				if(input=='Y'||input=='y'){
 					if(CurrentNode == FirstNode){
 						DeleteFirst = FirstNode;
 						flag = 1;
-						//cout << "ÎªÊ×½áµã£¡";		//DEBUG
+						//cout << "ä¸ºé¦–ç»“ç‚¹ï¼";		//DEBUG
 					}
 					if(CurrentNode == RearNode){
 						DeleteRear = RearNode;
-						//cout << "ÎªÎ²½áµã£¡";
+						//cout << "ä¸ºå°¾ç»“ç‚¹ï¼";
 						flag = 2;
-						//cout << "ÊÇrearnode,Êı¾İÊÇ:" << RearNode->Data.name;		//DEBUG
+						//cout << "æ˜¯rearnode,æ•°æ®æ˜¯:" << RearNode->Data.name;		//DEBUG
 					}
 					if(CurrentNode != FirstNode&&CurrentNode != RearNode){
 						TempNode = CurrentNode ;
@@ -510,7 +510,7 @@ void DoubleLinkList< NodeType >::DeleteByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈ
 						TEmpNode = TempNode->PreviousNode ;
 						TEmpNode->NextNode = CurrentNode ;
 						delete TempNode;
-						cout << "É¾³ı³É¹¦£¡";
+						cout << "åˆ é™¤æˆåŠŸï¼";
 					}
 				}
 			if(input!='Y'||input!='y')	break;
@@ -521,7 +521,7 @@ void DoubleLinkList< NodeType >::DeleteByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈ
 		FirstNode = FirstNode->NextNode;
 		FirstNode->PreviousNode = NULL;
 		delete DeleteFirst;
-		cout << "É¾³ı³É¹¦£¡";
+		cout << "åˆ é™¤æˆåŠŸï¼";
 		//return;
 	}
 	if(flag == 2){
@@ -536,37 +536,37 @@ void DoubleLinkList< NodeType >::DeleteByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈ
 
 /*********************************************************************/
 template< class NodeType >
-void DoubleLinkList< NodeType >::DeleteByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄÁªÏµÈËµÄĞòºÅ
+void DoubleLinkList< NodeType >::DeleteByIndex(int SearchNum)	//ä¼ å‚ä¸ºæ‰‹åŠ¨è¾“å…¥çš„è”ç³»äººçš„åºå·
 {
 	Node< NodeType > *CurrentNode = FirstNode,*TempNode,*TEmpNode, *DeleteFirst, *DeleteRear;
 	int flag = 0;
 	while ( CurrentNode != NULL)
 		{
 			if(CurrentNode->Data.num==SearchNum){
-				cout << "Ô­ÓĞÁªÏµÈËĞÅÏ¢:\n";
+				cout << "åŸæœ‰è”ç³»äººä¿¡æ¯:\n";
 				cout<<setiosflags(ios::left);
-				cout<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+				cout<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 				cout<<setw(6)<<CurrentNode->Data.num
 					<<setw(14)<<CurrentNode->Data.name
 					<<setw(6)<<CurrentNode->Data.age
 					<<setw(18)<<CurrentNode->Data.tel<<endl;
-				cout << "È·ÈÏÉ¾³ıÂğ£¿(Y/N): ";
+				cout << "ç¡®è®¤åˆ é™¤å—ï¼Ÿ(Y/N): ";
 				char input;
 				cin>>input;
 				if(input=='Y'||input=='y'){
 					if(CurrentNode == FirstNode){
 						DeleteFirst = FirstNode;
 						flag = 1;
-						//cout << "ÎªÊ×½áµã£¡";
+						//cout << "ä¸ºé¦–ç»“ç‚¹ï¼";
 					}
 					if(CurrentNode == RearNode){
 						DeleteRear = RearNode;
-						//cout << "ÎªÎ²½áµã£¡";
+						//cout << "ä¸ºå°¾ç»“ç‚¹ï¼";
 						flag = 2;
-						//cout << "ÊÇrearnode,Êı¾İÊÇ:" << RearNode->Data.name;
+						//cout << "æ˜¯rearnode,æ•°æ®æ˜¯:" << RearNode->Data.name;
 					}
 					if(CurrentNode != FirstNode&&CurrentNode != RearNode){
 						TempNode = CurrentNode ;
@@ -575,7 +575,7 @@ void DoubleLinkList< NodeType >::DeleteByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄ
 						TEmpNode = TempNode->PreviousNode ;
 						TEmpNode->NextNode = CurrentNode ;
 						delete TempNode;
-						cout << "É¾³ı³É¹¦£¡";
+						cout << "åˆ é™¤æˆåŠŸï¼";
 					}
 				}
 			if(input!='Y'||input!='y')	break;
@@ -586,7 +586,7 @@ void DoubleLinkList< NodeType >::DeleteByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄ
 		FirstNode = FirstNode->NextNode;
 		FirstNode->PreviousNode = NULL;
 		delete DeleteFirst;
-		cout << "É¾³ı³É¹¦£¡";
+		cout << "åˆ é™¤æˆåŠŸï¼";
 		//return;
 	}
 	if(flag == 2){
@@ -601,38 +601,38 @@ void DoubleLinkList< NodeType >::DeleteByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄ
 
 /*********************************************************************/
 template< class NodeType >
-void DoubleLinkList< NodeType >::UpdateByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄÁªÏµÈËµÄĞÕÃû
+void DoubleLinkList< NodeType >::UpdateByName(char *search_name)	//ä¼ å‚ä¸ºæ‰‹åŠ¨è¾“å…¥çš„è”ç³»äººçš„å§“å
 {
 	Node< NodeType > *CurrentNode = FirstNode;
 	while ( CurrentNode != NULL)
 		{
 			if(CompStr(CurrentNode->Data.name,search_name)){
-				cout << "Ô­ÓĞÁªÏµÈËĞÅÏ¢:\n";
+				cout << "åŸæœ‰è”ç³»äººä¿¡æ¯:\n";
 				cout<<setiosflags(ios::left);
-				cout<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+				cout<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 				cout<<setw(6)<<CurrentNode->Data.num
 					<<setw(14)<<CurrentNode->Data.name
 					<<setw(6)<<CurrentNode->Data.age
 					<<setw(18)<<CurrentNode->Data.tel<<endl;
-				cout << "È·ÈÏ¸ü¸ÄÂğ£¿(Y/N): ";
+				cout << "ç¡®è®¤æ›´æ”¹å—ï¼Ÿ(Y/N): ";
 				char input;
 				cin>>input;
 				if(input=='Y'||input=='y'){
-					cout<<"ĞÕÃû: ";
+					cout<<"å§“å: ";
 					cin>>CurrentNode->Data.name;
-					cout<<"\nÄêÁä: ";
+					cout<<"\nå¹´é¾„: ";
 					cin>>CurrentNode->Data.age;
-					cout<<"\nµç»°: ";
+					cout<<"\nç”µè¯: ";
 					cin >> CurrentNode->Data.tel;
-					cout << "\nĞŞ¸Ä³É¹¦£¡¸ü¸ÄºóĞÅÏ¢: \n";
+					cout << "\nä¿®æ”¹æˆåŠŸï¼æ›´æ”¹åä¿¡æ¯: \n";
 					cout<<setiosflags(ios::left);
-					cout<<setw(6)<<"ĞòºÅ"
-						<<setw(14)<<"ĞÕÃû"
-						<<setw(6)<<"ÄêÁä"
-						<<setw(18)<<"µç»°"<<endl;
+					cout<<setw(6)<<"åºå·"
+						<<setw(14)<<"å§“å"
+						<<setw(6)<<"å¹´é¾„"
+						<<setw(18)<<"ç”µè¯"<<endl;
 					cout<<setw(6)<<CurrentNode->Data.num
 						<<setw(14)<<CurrentNode->Data.name
 						<<setw(6)<<CurrentNode->Data.age
@@ -647,38 +647,38 @@ void DoubleLinkList< NodeType >::UpdateByName(char *search_name)	//´«²ÎÎªÊÖ¶¯ÊäÈ
 
 /*********************************************************************/
 template< class NodeType >
-void DoubleLinkList< NodeType >::UpdateByIndex(int SearchNum)	//´«²ÎÎªÊÖ¶¯ÊäÈëµÄÁªÏµÈËµÄĞòºÅ
+void DoubleLinkList< NodeType >::UpdateByIndex(int SearchNum)	//ä¼ å‚ä¸ºæ‰‹åŠ¨è¾“å…¥çš„è”ç³»äººçš„åºå·
 {
 	Node< NodeType > *CurrentNode = FirstNode;
 	while ( CurrentNode != NULL)
 		{
 			if(CurrentNode->Data.num==SearchNum){
-				cout << "Ô­ÓĞÁªÏµÈËĞÅÏ¢:\n";
+				cout << "åŸæœ‰è”ç³»äººä¿¡æ¯:\n";
 				cout<<setiosflags(ios::left);
-				cout<<setw(6)<<"ĞòºÅ"
-					<<setw(14)<<"ĞÕÃû"
-					<<setw(6)<<"ÄêÁä"
-					<<setw(18)<<"µç»°"<<endl;
+				cout<<setw(6)<<"åºå·"
+					<<setw(14)<<"å§“å"
+					<<setw(6)<<"å¹´é¾„"
+					<<setw(18)<<"ç”µè¯"<<endl;
 				cout<<setw(6)<<CurrentNode->Data.num
 					<<setw(14)<<CurrentNode->Data.name
 					<<setw(6)<<CurrentNode->Data.age
 					<<setw(18)<<CurrentNode->Data.tel<<endl;
-				cout << "È·ÈÏ¸ü¸ÄÂğ£¿(Y/N): ";
+				cout << "ç¡®è®¤æ›´æ”¹å—ï¼Ÿ(Y/N): ";
 				char input;
 				cin>>input;
 				if(input=='Y'||input=='y'){
-					cout<<"ĞÕÃû: ";
+					cout<<"å§“å: ";
 					cin>>CurrentNode->Data.name;
-					cout<<"\nÄêÁä: ";
+					cout<<"\nå¹´é¾„: ";
 					cin>>CurrentNode->Data.age;
-					cout<<"\nµç»°: ";
+					cout<<"\nç”µè¯: ";
 					cin >> CurrentNode->Data.tel;
-					cout << "\nĞŞ¸Ä³É¹¦£¡¸ü¸ÄºóĞÅÏ¢: \n";
+					cout << "\nä¿®æ”¹æˆåŠŸï¼æ›´æ”¹åä¿¡æ¯: \n";
 					cout<<setiosflags(ios::left);
-					cout<<setw(6)<<"ĞòºÅ"
-						<<setw(14)<<"ĞÕÃû"
-						<<setw(6)<<"ÄêÁä"
-						<<setw(18)<<"µç»°"<<endl;
+					cout<<setw(6)<<"åºå·"
+						<<setw(14)<<"å§“å"
+						<<setw(6)<<"å¹´é¾„"
+						<<setw(18)<<"ç”µè¯"<<endl;
 					cout<<setw(6)<<CurrentNode->Data.num
 						<<setw(14)<<CurrentNode->Data.name
 						<<setw(6)<<CurrentNode->Data.age
