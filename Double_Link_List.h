@@ -1,53 +1,53 @@
-/*Ë«ÏòÁ´±í£ºAÀàÌâ*/
-/*Ö÷º¯Êı²¿·Ö*/
-/* Author : InetGeek(È½µÂ·¢)£¬2021-04-20. @Copyright By InetGeek*/
+/*åŒå‘é“¾è¡¨ï¼šAç±»é¢˜*/
+/*ä¸»å‡½æ•°éƒ¨åˆ†*/
+/* Author : InetGeekï¼Œ2021-04-20. @Copyright By InetGeek*/
 #ifndef DoubleLinkList_H
 #define DoubleLinkList_H
 
-template< class NodeType > class Node;           /* ½áµãÀàÄ£°åÉùÃ÷ */
-template< class NodeType > class DoubleLinkList; 	/* Ë«ÏòÁ´±íÀàÄ£°åÉùÃ÷ */
+template< class NodeType > class Node;           /* ç»“ç‚¹ç±»æ¨¡æ¿å£°æ˜ */
+template< class NodeType > class DoubleLinkList; 	/* åŒå‘é“¾è¡¨ç±»æ¨¡æ¿å£°æ˜ */
 
 /***************************************************************/
 
-template< class NodeType >	/* ½áµãÀàÊµÏÖÄ£°å¶¨Òå */
+template< class NodeType >	/* ç»“ç‚¹ç±»å®ç°æ¨¡æ¿å®šä¹‰ */
 class Node
 {
-	friend class DoubleLinkList< NodeType >;     //ÉùÃ÷Ë«ÏòÁ´±íÎª½áµãNodeÓÑÔªÀà£¬ÒÔ·ÃÎÊÆäÊı¾İ
+	friend class DoubleLinkList< NodeType >;     //å£°æ˜åŒå‘é“¾è¡¨ä¸ºç»“ç‚¹Nodeå‹å…ƒç±»ï¼Œä»¥è®¿é—®å…¶æ•°æ®
 
 
 	private :
-		NodeType Data;	 //¶¨ÒåÍ¨ÓÃÀàĞÍNodeType¶ÔÏó
-		Node<NodeType> *PreviousNode; //½áµãÇ°ÇıÖ¸Õë
-		Node< NodeType > *NextNode;  //½áµãºó¼ÌÖ¸Õë
+		NodeType Data;	 //å®šä¹‰é€šç”¨ç±»å‹NodeTypeå¯¹è±¡
+		Node<NodeType> *PreviousNode; //ç»“ç‚¹å‰é©±æŒ‡é’ˆ
+		Node< NodeType > *NextNode;  //ç»“ç‚¹åç»§æŒ‡é’ˆ
 	public :
-		Node();						//¹¹Ôìº¯Êı£¬½áµã³õÊ¼»¯
-		Node( NodeType &Value );	//¸´ÖÆ¹¹Ôìº¯Êı£¬½Úµã¸³Öµ
-		~Node();       //Îö¹¹º¯Êı£¬ÊÍ·Å½áµãÄÚ´æ
+		Node();						//æ„é€ å‡½æ•°ï¼Œç»“ç‚¹åˆå§‹åŒ–
+		Node( NodeType &Value );	//å¤åˆ¶æ„é€ å‡½æ•°ï¼ŒèŠ‚ç‚¹èµ‹å€¼
+		~Node();       //ææ„å‡½æ•°ï¼Œé‡Šæ”¾ç»“ç‚¹å†…å­˜
 };
 /********************************************************/
-template< class NodeType >	/* Ë«ÏòÁ´±íÀàÊµÏÖÄ£°å¶¨Òå */
+template< class NodeType >	/* åŒå‘é“¾è¡¨ç±»å®ç°æ¨¡æ¿å®šä¹‰ */
 class DoubleLinkList
 {
 	private :
-	  Node< NodeType > *FirstNode;	 //Ë«ÏòÁ´±íÍ·½áµãÖ¸Õë
-	  Node< NodeType > *RearNode;  //Ë«ÏòÁ´±íÍ·½áµãÎ²Ö¸Õë
+	  Node< NodeType > *FirstNode;	 //åŒå‘é“¾è¡¨å¤´ç»“ç‚¹æŒ‡é’ˆ
+	  Node< NodeType > *RearNode;  //åŒå‘é“¾è¡¨å¤´ç»“ç‚¹å°¾æŒ‡é’ˆ
 	public :
-		DoubleLinkList();	 //¹¹Ôìº¯Êı£¬Á´±í³õÊ¼»¯	
-		//~DoubleLinkList();  //Îö¹¹º¯Êı£¬ÊÍ·ÅÁ´±íÄÚ´æ
-		bool IsEmpty();    //ÅĞ¶ÏÁªÏµÈËÁ´±íÊÇ·ñÎª¿Õ£¬Îª¿ÕÔò·µ»Øtrue
-		void InsertAtRear( NodeType &Value );	//Á´±íÉÏÏòºó²åÈëÁªÏµÈË½áµã 
-		void TraverseForward();	//´ÓÇ°Íùºó±éÀúÁªÏµÈËµç»°²¾
-		int FileWrite();	//½«ÁªÏµÈËĞÅÏ¢±£´æµ½±¾µØÎÄ¼ş
-		int FileRead();	//´Ó±¾µØÎÄ¼şÖĞ¶ÁÈ¡ÁªÏµÈËµç»°²¾ĞÅÏ¢
-		bool CompStr(char *, char *);	//ÁªÏµÈËĞÕÃûÍ¨Åä·ûÆ¥Åä
-		void SearchByName(char *);	//Í¨¹ıĞÕÃû²éÕÒÁªÏµÈË
-		void SearchByIndex(int);	//Í¨¹ıĞòºÅ²éÕÒÁªÏµÈË
-		void DeleteByName(char *);	//Í¨¹ıĞÕÃûÉ¾³ıÁªÏµÈË
-		void DeleteByIndex(int);	//Í¨¹ıĞòºÅÉ¾³ıÁªÏµÈË
-		void UpdateByName(char *);	//Í¨¹ıĞÕÃû²éÕÒÁªÏµÈË²¢¸ü¸ÄÆäĞÅÏ¢
-		void UpdateByIndex(int);	//Í¨¹ıĞòºÅ²éÕÒÁªÏµÈË²¢¸ü¸ÄÆäĞÅÏ¢
-		int LenghtOfDoubleLinkList();	//ÅĞ¶ÏÁ´±í³¤¶È£¬¼´µç»°²¾ÁªÏµÈË×ÜÊı 
-		Node< NodeType > *CreateNode( NodeType &Value );	//Éú³É½áµãÄ£°å
+		DoubleLinkList();	 //æ„é€ å‡½æ•°ï¼Œé“¾è¡¨åˆå§‹åŒ–	
+		//~DoubleLinkList();  //ææ„å‡½æ•°ï¼Œé‡Šæ”¾é“¾è¡¨å†…å­˜
+		bool IsEmpty();    //åˆ¤æ–­è”ç³»äººé“¾è¡¨æ˜¯å¦ä¸ºç©ºï¼Œä¸ºç©ºåˆ™è¿”å›true
+		void InsertAtRear( NodeType &Value );	//é“¾è¡¨ä¸Šå‘åæ’å…¥è”ç³»äººç»“ç‚¹ 
+		void TraverseForward();	//ä»å‰å¾€åéå†è”ç³»äººç”µè¯ç°¿
+		int FileWrite();	//å°†è”ç³»äººä¿¡æ¯ä¿å­˜åˆ°æœ¬åœ°æ–‡ä»¶
+		int FileRead();	//ä»æœ¬åœ°æ–‡ä»¶ä¸­è¯»å–è”ç³»äººç”µè¯ç°¿ä¿¡æ¯
+		bool CompStr(char *, char *);	//è”ç³»äººå§“åé€šé…ç¬¦åŒ¹é…
+		void SearchByName(char *);	//é€šè¿‡å§“åæŸ¥æ‰¾è”ç³»äºº
+		void SearchByIndex(int);	//é€šè¿‡åºå·æŸ¥æ‰¾è”ç³»äºº
+		void DeleteByName(char *);	//é€šè¿‡å§“ååˆ é™¤è”ç³»äºº
+		void DeleteByIndex(int);	//é€šè¿‡åºå·åˆ é™¤è”ç³»äºº
+		void UpdateByName(char *);	//é€šè¿‡å§“åæŸ¥æ‰¾è”ç³»äººå¹¶æ›´æ”¹å…¶ä¿¡æ¯
+		void UpdateByIndex(int);	//é€šè¿‡åºå·æŸ¥æ‰¾è”ç³»äººå¹¶æ›´æ”¹å…¶ä¿¡æ¯
+		int LenghtOfDoubleLinkList();	//åˆ¤æ–­é“¾è¡¨é•¿åº¦ï¼Œå³ç”µè¯ç°¿è”ç³»äººæ€»æ•° 
+		Node< NodeType > *CreateNode( NodeType &Value );	//ç”Ÿæˆç»“ç‚¹æ¨¡æ¿
 };
 /*******************************************************/
 #endif
